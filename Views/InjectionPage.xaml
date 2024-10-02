@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlasticsApp.Views.InjectionPage"
+             Title="InjectionPage"
+             BackgroundColor="#ebebeb"
+             Shell.NavBarHasShadow="true"
+             >
+
+    <Grid>
+ 
+        <ScrollView Margin="0,50,0,0">
+            <StackLayout Orientation="Vertical">
+
+                <CollectionView x:Name="InjectionPageItemsList" ItemsSource="{Binding InjectionPageItems}" Margin="0,10,0,10">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HeightRequest="72" Margin="0">
+                                <Border Margin="12,0,12,0" HeightRequest="60" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" StrokeThickness="0">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black"
+                          Offset="0,0"
+                          Radius="12"
+                          Opacity="0.3" />
+                                    </Border.Shadow>
+                                    <Frame HeightRequest="60" BorderColor="Transparent" BackgroundColor="White" Padding="10" VerticalOptions="CenterAndExpand">
+                                        <Grid>
+                                            <Path Margin="0,0,10,0" Fill="#f2ba00" HeightRequest="16" WidthRequest="16" Aspect="Uniform" HorizontalOptions="EndAndExpand" Data="M15.75,9.525,11.164,4.939A1.5,1.5,0,0,0,9.043,7.061l4.586,4.585a.5.5,0,0,1,0,.708L9.043,16.939a1.5,1.5,0,0,0,2.121,2.122l4.586-4.586A3.505,3.505,0,0,0,15.75,9.525Z"></Path>
+                                            <Label  Margin="10,0,0,0" Text="{Binding Designation}" TextColor="#333333" FontSize="Subtitle" VerticalOptions="CenterAndExpand" FontFamily="NunitoM"></Label>
+                                        </Grid>
+                                    </Frame>
+                                </Border>
+
+                                <!-- Tap Behaviour -->
+                                <Frame Margin="12,0,12,0" HeightRequest="60" BorderColor="Transparent" BackgroundColor="Transparent" Padding="10" VerticalOptions="CenterAndExpand">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={x:Reference InjectionPageItemsList}, Path=BindingContext.ClickedItem}" CommandParameter="{Binding .}" ></TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+
+
+        <StackLayout VerticalOptions="StartAndExpand">
+            <StackLayout Padding="12,0,0,0" BackgroundColor="CornflowerBlue"  HeightRequest="50" >
+                <Label  Margin="0,0,0,0" Text="Injecção" TextColor="White" FontSize="Title" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontFamily="NunitoM"></Label>
+            </StackLayout>
+            <BoxView HeightRequest="2" Color="#333333"></BoxView>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

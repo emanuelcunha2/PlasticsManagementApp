@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:PlasticsApp.ViewModels"
+             xmlns:views="clr-namespace:PlasticsApp.Views"
+             x:Class="PlasticsApp.MainPage"  
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+             android:TabbedPage.ToolbarPlacement="Top"
+             BarBackgroundColor="#333333"
+             BarTextColor="White"
+             SelectedTabColor="White"
+             UnselectedTabColor="White"
+             NavigationPage.TitleIconImageSource="turtleicon.svg"
+             NavigationPage.IconColor="White"
+             >
+
+    <NavigationPage.TitleView>
+        <Label Text="Gestão de Plásticos" FontSize="Large" TextColor="#333333" FontFamily="NunitoM" VerticalOptions="CenterAndExpand"/>
+    </NavigationPage.TitleView>
+
+    <TabbedPage.Children>
+        <views:InjectionPage Title="INJ."  IconImageSource="syringe.png"  ></views:InjectionPage>
+        <views:PaintingPage  Title="PIN."  IconImageSource="paint.png"></views:PaintingPage>
+        <views:FinalAssemblyPage Title="MON."  IconImageSource="belt.png"></views:FinalAssemblyPage>
+        <views:WarehousePage  Title="ARM."   IconImageSource="garage.png"></views:WarehousePage>
+    </TabbedPage.Children>
+
+</TabbedPage>

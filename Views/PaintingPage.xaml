@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlasticsApp.Views.PaintingPage"
+             Title="PaintingPage"
+             BackgroundColor="#ebebeb">
+    <StackLayout>
+        <StackLayout Padding="12,0,0,0" BackgroundColor="CornflowerBlue"  HeightRequest="50" >
+            <Label  Margin="0,0,0,0" Text="Pintura" TextColor="White" FontSize="Title" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontFamily="NunitoM"></Label>
+        </StackLayout>
+        <BoxView HeightRequest="2" Color="#333333"></BoxView>
+    </StackLayout>
+ 
+</ContentPage>

@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlasticsApp.Views.EventsPage"
+             Title="EventsPage"
+             BackgroundColor="#ebebeb">
+
+    <NavigationPage.TitleView>
+        <VerticalStackLayout VerticalOptions="Center">
+            <Label VerticalOptions="CenterAndExpand" Margin="0,-5,0,0"  Text="Injecção" FontSize="Title" TextColor="#333333" FontFamily="NunitoM"/>
+            <Label VerticalOptions="CenterAndExpand" Margin="0,-5,0,0"  Text="Registo de Eventos" FontSize="Caption" TextColor="#333333" FontFamily="NunitoM"/>
+        </VerticalStackLayout>
+    </NavigationPage.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout Margin="0,2,0,0">
+
+            <!-- Functioning Tip -->
+            <Border  Margin="12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                <Frame Padding="12" Margin="0" BorderColor="Transparent" BackgroundColor="CornflowerBlue">
+                    <StackLayout Margin="3,0,0,0" Orientation="Horizontal">
+                        <Path Margin="0,0,12,0" Aspect="Uniform" HeightRequest="30" WidthRequest="30" Fill="White" Data="M48.5,32A1.61,1.61,0,0,1,50,33.5v8.85Q50,47,45.5,47h-9a1.55,1.55,0,0,1,0-3.1h8.25c1.66,0,2.25-.61,2.25-2.32V33.5A1.61,1.61,0,0,1,48.5,32Zm-45,0A1.61,1.61,0,0,1,5,33.5H5v8.08c0,1.71.59,2.32,2.25,2.32H15.5a1.55,1.55,0,0,1,0,3.1h-9Q2,47,2,42.35H2V33.5A1.61,1.61,0,0,1,3.5,32ZM20.17,14c.73,0,1.33.45,1.33,1h0V37c0,.55-.6,1-1.33,1H16.83c-.73,0-1.33-.45-1.33-1h0V15c0-.55.6-1,1.33-1h3.34ZM11.5,14a1,1,0,0,1,1,1h0V37a1,1,0,0,1-1,1h-1a1,1,0,0,1-1-1h0V15a1,1,0,0,1,1-1h1Zm15,0a1,1,0,0,1,1,1h0V37a1,1,0,0,1-1,1h-1a1,1,0,0,1-1-1h0V15a1,1,0,0,1,1-1h1Zm15,0a1,1,0,0,1,1,1h0V37a1,1,0,0,1-1,1h-1a1,1,0,0,1-1-1h0V15a1,1,0,0,1,1-1h1Zm-6.33,0c.73,0,1.33.45,1.33,1h0V37c0,.55-.6,1-1.33,1H31.83c-.73,0-1.33-.45-1.33-1h0V15c0-.55.6-1,1.33-1h3.34ZM45.5,5Q50,5,50,9.65h0V18.5a1.5,1.5,0,0,1-3,0h0V10.42c0-1.71-.59-2.32-2.25-2.32H36.5a1.55,1.55,0,0,1,0-3.1h9Zm-30,0a1.55,1.55,0,0,1,0,3.1H7.25C5.59,8.1,5,8.71,5,10.42V18.5A1.61,1.61,0,0,1,3.5,20,1.61,1.61,0,0,1,2,18.5V9.65Q2,5,6.5,5Z"></Path>
+                        <Label FontFamily="NunitoB" LineBreakMode="CharacterWrap" TextColor="White" FontSize="Subtitle" Padding="0" Text="Scanner Disponível" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                    </StackLayout>
+                </Frame>
+            </Border>
+            
+            <!-- Section 1 - Initial Information -->
+            <StackLayout  IsVisible="{Binding Section1.IsVisible}">
+                <Border  Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" >
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                    </Border.Shadow>
+                    <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                        <StackLayout>
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Parte 1 - Informações Iniciais" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+                            <!-- Machine -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Máquina" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Entry FontFamily="NunitoM" Placeholder="Ler Máquina" Text="{Binding Machine}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                            </Grid>
+
+                            <!-- Machine Type -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Tipo" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Entry FontFamily="NunitoM" Placeholder="Ler Tipo" Text="{Binding Type}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                            </Grid>
+                            <!-- Levels circle visual management -->
+                            <StackLayout Orientation="Horizontal"  Margin="0,10,0,0">
+                                <StackLayout Orientation="Horizontal" MaximumWidthRequest="50" VerticalOptions="End" HorizontalOptions="Start" HeightRequest="17">
+                                    <Frame IsVisible="{Binding Section1.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="{StaticResource ThemeColor1}" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section2.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section3.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section4.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section5.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section6.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section7.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                </StackLayout>
+                                <!-- Next Section Button -->
+                                <Button HorizontalOptions="EndAndExpand" Margin="0,0,0,0" VerticalOptions="FillAndExpand" Padding="25,8,25,8" CommandParameter="{Binding Section1}"  Command="{Binding AdvanceSection}" FontSize="Medium" Text="Seguinte" BackgroundColor="CornflowerBlue" FontFamily="NunitoM"></Button>
+
+                            </StackLayout>
+
+                        </StackLayout>
+                    </Frame>
+                </Border>
+
+            </StackLayout>
+            
+            <!-- Section 2 - Open Events -->
+            <StackLayout IsVisible="{Binding Section2.IsVisible}" >
+                <Border    Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                    </Border.Shadow>
+                    <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                        <StackLayout>
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Parte 2 - Eventos Abertos" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+
+                            <VerticalStackLayout>
+                                <!-- Table Title -->
+                                <StackLayout BackgroundColor="White" HeightRequest="40" Margin="0,5,0,0">
+                                    <Grid VerticalOptions="CenterAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="9*"></ColumnDefinition>
+                                            <ColumnDefinition Width="24*"></ColumnDefinition>
+                                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="Evento" FontSize="Subtitle" FontFamily="NunitoB" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5"></Label>
+                                        <Label Grid.Column="1" Text="Descrição" FontSize="Subtitle" FontFamily="NunitoB" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5"></Label>
+                                        <Label Grid.Column="2" Text="Id" FontSize="Subtitle" FontFamily="NunitoB" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5"></Label>
+                                    </Grid>
+                                </StackLayout>
+
+                                <!-- Table -->
+                                <StackLayout Margin="0">
+                                    <ListView RowHeight="60" ItemsSource="{Binding SelectedEvents}" SelectedItem="{Binding SelectedEvent}" VerticalScrollBarVisibility="Never" SeparatorVisibility="None" Margin="0,0,0,0">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout BackgroundColor="Transparent">
+                                                        <BoxView HeightRequest="1"  CornerRadius="2" Color="#f6f6f6"></BoxView>
+                                                        <Grid VerticalOptions="CenterAndExpand">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="9*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="22*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="{Binding StopId}" FontSize="Subtitle" FontFamily="NunitoB" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5" TextColor="CornflowerBlue" MinimumHeightRequest="35"/>
+                                                            <Label Grid.Column="1" Text="{Binding Description}" FontSize="Subtitle" FontFamily="NunitoM" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5"></Label>
+                                                            <Label Grid.Column="2" Text="{Binding Id}" FontSize="Subtitle" FontFamily="NunitoM" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5"></Label>
+                                                            <!--<ImageButton BackgroundColor="SaddleBrown"  Source="trashcan" Grid.Column="3" Margin="0"  Command="{Binding BindingContext.DeleteOrderFail, Source={RelativeSource AncestorType={x:Type ListView}}}" CommandParameter="{Binding .}"></ImageButton> -->
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </VerticalStackLayout>
+
+                            <!-- Levels circle visual management -->
+                            <StackLayout Orientation="Horizontal"   HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                                <StackLayout Orientation="Horizontal" MaximumWidthRequest="50" VerticalOptions="End" HorizontalOptions="StartAndExpand" HeightRequest="17">
+                                    <Frame IsVisible="{Binding Section1.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section2.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="{StaticResource ThemeColor1}" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section3.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section4.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section5.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section6.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section7.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                </StackLayout>
+                                <!-- Previous Section Button -->
+                                <Border VerticalOptions="CenterAndExpand" StrokeThickness="0" Padding="7" Margin="0,0,8,0">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RegressSection}" CommandParameter="{Binding Section2}" ></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                    <Path WidthRequest="24" Margin="0,0,0,0" HeightRequest="22"  Aspect="Uniform" Fill="{StaticResource ThemeColor1}" Data="M15,7H10.17V5.414A2,2,0,0,0,6.756,4L.876,9.879a3,3,0,0,0,0,4.242L6.756,20a2,2,0,0,0,3.414-1.414V17H16a6.006,6.006,0,0,1,6,6,1,1,0,0,0,2,0V16A9.01,9.01,0,0,0,15,7Z"></Path>
+                                </Border>
+
+                                <!-- Next Section Button -->
+                                <Button HorizontalOptions="End" Margin="0,0,0,0" VerticalOptions="FillAndExpand" Padding="25,8,25,8" CommandParameter="{Binding Section2}"  Command="{Binding AdvanceSection}" FontSize="Medium" Text="Seguinte" BackgroundColor="CornflowerBlue" FontFamily="NunitoM"></Button>
+
+                            </StackLayout>
+
+                        </StackLayout>
+                    </Frame>
+                </Border>
+
+            </StackLayout>
+            
+            <!-- Section 3 - Event informations -->
+            <StackLayout  IsVisible="{Binding Section3.IsVisible}">
+                <Border  Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                    </Border.Shadow>
+                    <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                        <VerticalStackLayout>
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Parte 3 - Detalhes Evento" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+
+                            <!-- Event Details -->
+                            <!-- Event -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.55*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.45*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1.65*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Evento" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Entry FontFamily="NunitoM" Placeholder="" Text="{Binding SelectedEvent.Id}" Grid.Column="1" Grid.ColumnSpan="1"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                                <Entry FontFamily="NunitoM" Placeholder="" Text="{Binding SelectedEvent.Description}" Grid.Column="2" Grid.ColumnSpan="1"  FontSize="Subtitle" Margin="10,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                            </Grid>
+                            <Label IsVisible="{Binding SelectedEvent.IsCavitiesEvent}" FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Identificar cavidades" TextColor="{StaticResource ThemeColorWarning}" Margin="0,0,0,0"></Label>
+                            <!-- Extra info -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Info Extra" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Editor FontFamily="NunitoM" AutoSize="TextChanges" Placeholder="Inserir" Text="{Binding SelectedEvent.Informations}"  Grid.Column="1" Grid.ColumnSpan="2" WidthRequest="210" HorizontalOptions="Start" FontSize="Subtitle" Margin="0,0,0,0" BackgroundColor="Transparent"></Editor>
+                            </Grid>
+
+                            <!-- Causes -->
+                            <Grid Margin="0,0,0,0" IsVisible="{Binding IsCausesVisible}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Causas" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Picker ItemsSource="{Binding EventCauses}" Title="Selecionar Causa"  Grid.Column="1" Grid.ColumnSpan="2" SelectedItem="{Binding SelectedEvent.Causes}"></Picker>
+                            </Grid>
+
+                            <!-- Levels circle visual management -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                                <StackLayout Orientation="Horizontal" MaximumWidthRequest="50" VerticalOptions="End" HorizontalOptions="StartAndExpand" HeightRequest="17">
+                                    <Frame IsVisible="{Binding Section1.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section2.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section3.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="{StaticResource ThemeColor1}" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section4.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section5.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section6.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section7.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                </StackLayout>
+                                <!-- Previous Section Button -->
+                                <Border VerticalOptions="CenterAndExpand" StrokeThickness="0" Padding="7" Margin="0,0,8,0">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RegressSection}" CommandParameter="{Binding Section3}" ></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                    <Path WidthRequest="24" Margin="0,0,0,0" HeightRequest="22"  Aspect="Uniform" Fill="{StaticResource ThemeColor1}" Data="M15,7H10.17V5.414A2,2,0,0,0,6.756,4L.876,9.879a3,3,0,0,0,0,4.242L6.756,20a2,2,0,0,0,3.414-1.414V17H16a6.006,6.006,0,0,1,6,6,1,1,0,0,0,2,0V16A9.01,9.01,0,0,0,15,7Z"></Path>
+                                </Border>
+
+                                <!-- Next Section Button -->
+                                <Button HorizontalOptions="End" Margin="0,0,0,0" VerticalOptions="FillAndExpand" Padding="25,8,25,8"  CommandParameter="{Binding Section3}"  Command="{Binding AdvanceSection}" FontSize="Medium" Text="Seguinte" BackgroundColor="CornflowerBlue" FontFamily="NunitoM"></Button>
+                            </StackLayout>
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </Border>
+            </StackLayout>
+            
+            <!-- Section 4 - Production Order -->
+            <StackLayout IsVisible="{Binding Section4.IsVisible}"  >
+                <Border  Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                    </Border.Shadow>
+                    <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                        <VerticalStackLayout>
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Parte 4 - Ordem de Produção" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+
+                            <!-- Order number -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2.5*"></ColumnDefinition> 
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Ordem Número" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Entry FontFamily="NunitoM" Placeholder="" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding SelectedProductionOrder.OrderNumber}"  FontSize="Subtitle" Margin="0,0,5,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                             </Grid>
+                            
+                            <!-- PartNumber -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Parte Número" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Entry FontFamily="NunitoM" Placeholder="" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding SelectedProductionOrder.PartNumber}"  FontSize="Subtitle" Margin="0,0,5,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                            </Grid>
+
+                            <!-- Levels circle visual management -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                                <StackLayout Orientation="Horizontal" MaximumWidthRequest="50" VerticalOptions="End" HorizontalOptions="StartAndExpand" HeightRequest="17">
+                                    <Frame IsVisible="{Binding Section1.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section2.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section3.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section4.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="{StaticResource ThemeColor1}" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section5.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section6.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section7.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                </StackLayout>
+
+                                <!-- Previous Section Button -->
+                                <Border VerticalOptions="CenterAndExpand" StrokeThickness="0" Padding="7" Margin="0,0,8,0">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RegressSection}" CommandParameter="{Binding Section4}" ></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                    <Path WidthRequest="24" Margin="0,0,0,0" HeightRequest="22"  Aspect="Uniform" Fill="{StaticResource ThemeColor1}" Data="M15,7H10.17V5.414A2,2,0,0,0,6.756,4L.876,9.879a3,3,0,0,0,0,4.242L6.756,20a2,2,0,0,0,3.414-1.414V17H16a6.006,6.006,0,0,1,6,6,1,1,0,0,0,2,0V16A9.01,9.01,0,0,0,15,7Z"></Path>
+                                </Border>
+                                <!-- Next Section Button -->
+                                <Button HorizontalOptions="End" Margin="0,0,0,0" VerticalOptions="FillAndExpand" Padding="25,8,25,8"  CommandParameter="{Binding Section4}"  Command="{Binding AdvanceSection}" FontSize="Medium" Text="Seguinte" BackgroundColor="CornflowerBlue" FontFamily="NunitoM"></Button>
+
+                            </StackLayout>
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </Border>
+
+            </StackLayout>
+            
+            <!-- Section 5 - Verifications -->
+            <StackLayout  IsVisible="{Binding Section5.IsVisible}" >
+                <Border  Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                    </Border.Shadow>
+                    <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                        <VerticalStackLayout>
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Parte 5 - Verificações" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+                            <!-- Raw Material Information -->
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Informações da Matéria Prima" TextColor="CornflowerBlue" Margin="0,12,0,0"></Label>
+
+                            <!-- Material 1 -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Material 1" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Entry FontFamily="NunitoM" Placeholder="" Text="{Binding SelectedProductionOrder.Material}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                            </Grid>
+
+                            <!-- Code Scan 1 -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Leitura Cod. 1" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Entry FontFamily="NunitoM" Placeholder=""  Text="{Binding MaterialBarcode1}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                            </Grid>
+
+                            <!-- Material 2 -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Material 2" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Entry FontFamily="NunitoM" Placeholder=""  Text="{Binding SelectedProductionOrder.Material2}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry> 
+                            </Grid>
+
+
+                            <!-- Code Scan 2 -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Leitura Cod. 2" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Entry FontFamily="NunitoM" Placeholder=""  Text="{Binding MaterialBarcode2}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                            </Grid>
+
+                            <!-- Molds Informations -->
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Informações de Moldes" TextColor="CornflowerBlue" Margin="0,12,0,0"></Label>
+
+                            <!-- Barcode -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Cod. Barras" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Entry FontFamily="NunitoM" Placeholder=""  Text="{Binding MouldingText}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                            </Grid>
+
+                            <Line HeightRequest="3" Stroke="{StaticResource ThemeColor1}" Margin="0,18,0,8" StrokeDashArray="1,1" StrokeThickness="11" X1="-5" X2="400"></Line>
+
+                            <!-- Deferred Change Over -->
+                            <HorizontalStackLayout Margin="0,2,0,0">
+                                <CheckBox x:Name="DeferredChangeOverCheckbox" IsChecked="{Binding DiferedChangeOver}" Color="CornflowerBlue" Margin="-7,0,3,0" ScaleX="0.9" ScaleY="0.9" ></CheckBox>
+                                <Label FontFamily="NunitoM" TextColor="#333333" FontSize="Subtitle" Text="Change Over Deferido" VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                 Binding="{Binding Source={x:Reference DeferredChangeOverCheckbox}, Path=IsChecked}"
+                                                 Value="true">
+                                            <Setter Property="FontFamily"
+                                                Value="NunitoB" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </HorizontalStackLayout>
+
+                            <!-- Levels circle visual management -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                                <StackLayout Orientation="Horizontal" MaximumWidthRequest="50" VerticalOptions="End" HorizontalOptions="StartAndExpand" HeightRequest="17">
+                                    <Frame IsVisible="{Binding Section1.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section2.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section3.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section4.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section5.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="{StaticResource ThemeColor1}" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section6.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section7.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                </StackLayout>
+
+                                <!-- Previous Section Button -->
+                                <Border VerticalOptions="CenterAndExpand" StrokeThickness="0" Padding="7" Margin="0,0,8,0">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RegressSection}" CommandParameter="{Binding Section5}" ></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                    <Path WidthRequest="24" Margin="0,0,0,0" HeightRequest="22"  Aspect="Uniform" Fill="{StaticResource ThemeColor1}" Data="M15,7H10.17V5.414A2,2,0,0,0,6.756,4L.876,9.879a3,3,0,0,0,0,4.242L6.756,20a2,2,0,0,0,3.414-1.414V17H16a6.006,6.006,0,0,1,6,6,1,1,0,0,0,2,0V16A9.01,9.01,0,0,0,15,7Z"></Path>
+                                </Border>
+                                <!-- Next Section Button -->
+                                <Button HorizontalOptions="End" Margin="0,0,0,0" VerticalOptions="FillAndExpand" Padding="25,8,25,8"  CommandParameter="{Binding Section5}"  Command="{Binding AdvanceSection}" FontSize="Medium" Text="Seguinte" BackgroundColor="CornflowerBlue" FontFamily="NunitoM"></Button>
+
+                            </StackLayout>
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </Border>
+            </StackLayout>
+            
+
+            <!-- Section 6 - Change Over Options -->
+            <StackLayout  IsVisible="{Binding Section6.IsVisible}" >
+                <Border  Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                    </Border.Shadow>
+                    <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                        <VerticalStackLayout>
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Parte 6 - Opções Change Over" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+
+                            <!-- Runner -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Runner" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Picker Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding RunnerItems}" SelectedItem="{Binding SelectedRunnerItem}" Title="Selecionar Runner"></Picker>
+                            </Grid>
+
+                            <!-- Temperature -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Temperature" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Picker Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding TemperatureItems}" SelectedItem="{Binding SelectedTemperatureItem}" Title="Selecionar Temperatura"></Picker>
+                            </Grid>
+
+                            <!-- Robot -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Robot" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Picker Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding RoboItems}" SelectedItem="{Binding SelectedRoboItem}" Title="Selecionar Robot"></Picker>
+                            </Grid>
+
+                            <!-- Levels circle visual management -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                                <StackLayout Orientation="Horizontal" MaximumWidthRequest="50" VerticalOptions="End" HorizontalOptions="StartAndExpand" HeightRequest="17">
+                                    <Frame IsVisible="{Binding Section1.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section2.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section3.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section4.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section5.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section6.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="{StaticResource ThemeColor1}" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section7.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                </StackLayout>
+
+                                <!-- Previous Section Button -->
+                                <Border VerticalOptions="CenterAndExpand" StrokeThickness="0" Padding="7" Margin="0,0,8,0">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RegressSection}" CommandParameter="{Binding Section6}" ></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                    <Path WidthRequest="24" Margin="0,0,0,0" HeightRequest="22"  Aspect="Uniform" Fill="{StaticResource ThemeColor1}" Data="M15,7H10.17V5.414A2,2,0,0,0,6.756,4L.876,9.879a3,3,0,0,0,0,4.242L6.756,20a2,2,0,0,0,3.414-1.414V17H16a6.006,6.006,0,0,1,6,6,1,1,0,0,0,2,0V16A9.01,9.01,0,0,0,15,7Z"></Path>
+                                </Border>
+                                <!-- Next Section Button -->
+                                <Button HorizontalOptions="End" Margin="0,0,0,0" VerticalOptions="FillAndExpand" Padding="25,8,25,8"  CommandParameter="{Binding Section6}"  Command="{Binding AdvanceSection}" FontSize="Medium" Text="Seguinte" BackgroundColor="CornflowerBlue" FontFamily="NunitoM"></Button>
+
+                            </StackLayout>
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </Border>
+            </StackLayout>
+           
+            <!-- Section 7 - Change Over Problems -->
+            <StackLayout  IsVisible="{Binding Section7.IsVisible}" >
+                <Border   Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                    </Border.Shadow>
+                    <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                        <VerticalStackLayout>
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Parte 7 - Problemas Change Over" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+                             
+                            <!--  Change Over Problems  -->
+                            <Grid Margin="0,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Problema" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Picker Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding ChangeOverProblems}" Title="Selecione Problema" SelectedItem="{Binding SelectedChangeOverProblem, Mode=TwoWay}" ItemDisplayBinding="{Binding Issue}" ></Picker>
+                            </Grid>
+
+                            <!-- Timer -->
+                            <Grid Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Diferença para o objectivo" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Label FontFamily="NunitoB"  Grid.Column="1" FontSize="Medium" Padding="0" Text="{Binding ChangeOverTimer}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" TextColor="CornflowerBlue"></Label>
+                            </Grid>
+
+                            <!-- Levels circle visual management -->
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                                <StackLayout Orientation="Horizontal" MaximumWidthRequest="50" VerticalOptions="End" HorizontalOptions="StartAndExpand" HeightRequest="17">
+                                    <Frame IsVisible="{Binding Section1.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section2.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section3.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section4.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section5.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section6.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="LightGray" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                    <Frame IsVisible="{Binding Section7.IsPartOfTemplate}" MaximumWidthRequest="11" Padding="0" BackgroundColor="{StaticResource ThemeColor1}" Margin="0,3,0,3" CornerRadius="50" BorderColor="Transparent"></Frame>
+                                </StackLayout>
+                                <!-- Previous Section Button -->
+                                <!-- Previous Section Button -->
+                                <Border VerticalOptions="CenterAndExpand" StrokeThickness="0" Padding="7" Margin="0,0,8,0">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RegressSection}" CommandParameter="{Binding Section7}" ></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                    <Path WidthRequest="24" Margin="0,0,0,0" HeightRequest="22"  Aspect="Uniform" Fill="{StaticResource ThemeColor1}" Data="M15,7H10.17V5.414A2,2,0,0,0,6.756,4L.876,9.879a3,3,0,0,0,0,4.242L6.756,20a2,2,0,0,0,3.414-1.414V17H16a6.006,6.006,0,0,1,6,6,1,1,0,0,0,2,0V16A9.01,9.01,0,0,0,15,7Z"></Path>
+                                </Border>
+                                <!-- Next Section Button -->
+                                <Button HorizontalOptions="End" Margin="0,0,0,0" VerticalOptions="FillAndExpand" Padding="25,8,25,8"  CommandParameter="{Binding Section7}"  Command="{Binding AdvanceSection}" FontSize="Medium" Text="Seguinte" BackgroundColor="CornflowerBlue" FontFamily="NunitoM"></Button>
+
+                            </StackLayout>  
+                        </VerticalStackLayout>
+                    </Frame>
+                </Border>
+            </StackLayout>
+
+            <!-- Section 8 - Save Changes   -->
+            <StackLayout IsVisible="{Binding Section8.IsVisible}">
+                <Border   Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                     Offset="0,0"
+                                     Radius="20"
+                                     Opacity="0.2" />
+                    </Border.Shadow>
+                    <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                        <VerticalStackLayout>
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Parte 8 - Gravar" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+
+                            <StackLayout  Orientation="Horizontal">
+                                <Label FontFamily="NunitoM" Margin="0,10,10,0" Grid.Column="0" FontSize="Medium" Padding="0" Text="{Binding Type}" TextColor="CornflowerBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Label FontFamily="NunitoM" Margin="0,10,0,0" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="{Binding SelectedEvent.Description}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                            </StackLayout>
+
+                            <StackLayout  Orientation="Horizontal">
+                                <Label FontFamily="NunitoM" Margin="0,10,10,0" Grid.Column="0" FontSize="Medium" Padding="0" Text="NOME" TextColor="CornflowerBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Label FontFamily="NunitoM" Margin="0,10,0,0" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="{Binding Machine}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                            </StackLayout>
+
+                            <!-- Move to sections --> 
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                                
+                                <!-- Previous Section Button -->
+                                <Border VerticalOptions="CenterAndExpand" StrokeThickness="0" Padding="7" Margin="0,0,8,0">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RegressSection}" CommandParameter="{Binding Section8}" ></TapGestureRecognizer>
+                                    </Border.GestureRecognizers>
+                                    <Path WidthRequest="24" Margin="0,0,0,0" HeightRequest="22"  Aspect="Uniform" Fill="{StaticResource ThemeColor1}" Data="M15,7H10.17V5.414A2,2,0,0,0,6.756,4L.876,9.879a3,3,0,0,0,0,4.242L6.756,20a2,2,0,0,0,3.414-1.414V17H16a6.006,6.006,0,0,1,6,6,1,1,0,0,0,2,0V16A9.01,9.01,0,0,0,15,7Z"></Path>
+                                </Border>
+                                <!-- Previous Section Button -->
+                                <Button HorizontalOptions="End" Margin="0,0,0,0" VerticalOptions="FillAndExpand" Padding="25,8,25,8"  Command="{Binding SaveButtonPressed}" FontSize="Medium" Text="Confirmar" BackgroundColor="#333333" FontFamily="NunitoM"></Button>
+
+                            </StackLayout>
+ 
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </Border>
+            </StackLayout>
+
+
+          </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlasticsApp.Views.LineRejectionPage"
+             xmlns:views="clr-namespace:PlasticsApp.Views" 
+             xmlns:viewmodels="clr-namespace:PlasticsApp.ViewModels" 
+             Title="LineRejectionPage" 
+             BarBackgroundColor="#333333" SelectedTabColor="{StaticResource ThemeColor1}" BarTextColor="White" UnselectedTabColor="White"
+             >
+    <NavigationPage.TitleView>
+        <VerticalStackLayout VerticalOptions="Center">
+            <Label VerticalOptions="CenterAndExpand" Margin="0,-5,0,0"  Text="Injecção" FontSize="Title" TextColor="#333333" FontFamily="NunitoM"/>
+            <Label VerticalOptions="CenterAndExpand" Margin="0,-5,0,0"  Text="Inspeção Visual" FontSize="Caption" TextColor="#333333" FontFamily="NunitoM"/>
+        </VerticalStackLayout>
+    </NavigationPage.TitleView>
+
+    <TabbedPage.Children>
+        <!-- Page 1 : Orders -->
+        <views:RejectionOrderPage x:Name="Page1" IconImageSource="order.png" >
+        </views:RejectionOrderPage>
+
+        <!-- Page 2 : FTQ Details -->
+        <views:RejectionFtqPage x:Name="Page2" IconImageSource="ftq3.png" >
+        </views:RejectionFtqPage>
+
+    </TabbedPage.Children>
+    
+ 
+</TabbedPage>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlasticsApp.Views.ToWipPage"
+             Title="ToWipPage"
+             Background="#ebebeb">
+    <NavigationPage.TitleView>
+        <VerticalStackLayout VerticalOptions="Center">
+            <Label VerticalOptions="CenterAndExpand" Margin="0,-5,0,0"  Text="Injecção" FontSize="Title" TextColor="#333333" FontFamily="NunitoM"/>
+            <Label VerticalOptions="CenterAndExpand" Margin="0,-5,0,0"  Text="Mover para WIP" FontSize="Caption" TextColor="#333333" FontFamily="NunitoM"/>
+        </VerticalStackLayout>
+    </NavigationPage.TitleView>
+    
+    <ScrollView>
+        <VerticalStackLayout Margin="0,2,0,0">
+
+            <!-- Functioning Tip -->
+            <Border  Margin="12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                <Frame Padding="12" Margin="0" BorderColor="Transparent" BackgroundColor="CornflowerBlue">
+                    <StackLayout Margin="3,0,0,0" Orientation="Horizontal">
+                        <Path Margin="0,0,12,0" Aspect="Uniform" HeightRequest="30" WidthRequest="30" Fill="White" Data="M48.5,32A1.61,1.61,0,0,1,50,33.5v8.85Q50,47,45.5,47h-9a1.55,1.55,0,0,1,0-3.1h8.25c1.66,0,2.25-.61,2.25-2.32V33.5A1.61,1.61,0,0,1,48.5,32Zm-45,0A1.61,1.61,0,0,1,5,33.5H5v8.08c0,1.71.59,2.32,2.25,2.32H15.5a1.55,1.55,0,0,1,0,3.1h-9Q2,47,2,42.35H2V33.5A1.61,1.61,0,0,1,3.5,32ZM20.17,14c.73,0,1.33.45,1.33,1h0V37c0,.55-.6,1-1.33,1H16.83c-.73,0-1.33-.45-1.33-1h0V15c0-.55.6-1,1.33-1h3.34ZM11.5,14a1,1,0,0,1,1,1h0V37a1,1,0,0,1-1,1h-1a1,1,0,0,1-1-1h0V15a1,1,0,0,1,1-1h1Zm15,0a1,1,0,0,1,1,1h0V37a1,1,0,0,1-1,1h-1a1,1,0,0,1-1-1h0V15a1,1,0,0,1,1-1h1Zm15,0a1,1,0,0,1,1,1h0V37a1,1,0,0,1-1,1h-1a1,1,0,0,1-1-1h0V15a1,1,0,0,1,1-1h1Zm-6.33,0c.73,0,1.33.45,1.33,1h0V37c0,.55-.6,1-1.33,1H31.83c-.73,0-1.33-.45-1.33-1h0V15c0-.55.6-1,1.33-1h3.34ZM45.5,5Q50,5,50,9.65h0V18.5a1.5,1.5,0,0,1-3,0h0V10.42c0-1.71-.59-2.32-2.25-2.32H36.5a1.55,1.55,0,0,1,0-3.1h9Zm-30,0a1.55,1.55,0,0,1,0,3.1H7.25C5.59,8.1,5,8.71,5,10.42V18.5A1.61,1.61,0,0,1,3.5,20,1.61,1.61,0,0,1,2,18.5V9.65Q2,5,6.5,5Z"></Path>
+                        <Label FontFamily="NunitoB" LineBreakMode="CharacterWrap" TextColor="White" FontSize="Subtitle" Padding="0" Text="Scanner Disponível" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                    </StackLayout>
+                </Frame>
+            </Border>
+
+            <!-- Production Order -->
+            <Border  Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                </Border.Shadow>
+                <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                    <VerticalStackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Ordem de Produção" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Subtitle" Text="{Binding SelectedProductionOrder.OrderId}" TextColor="CornflowerBlue" Margin="0,0,0,0" HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+
+                        <!-- Order number -->
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Número Ordem" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                            <Entry FontFamily="NunitoM" Placeholder="Ler ou inserir" Text="{Binding SelectedProductionOrder.OrderNumber}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                        </Grid>
+
+
+
+                    </VerticalStackLayout>
+                </Frame>
+            </Border>
+
+            <!-- Production Order Informations -->
+            <Border  Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                </Border.Shadow>
+                <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                    <VerticalStackLayout>
+                        <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Informações" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+
+                        <!-- PartNumber -->
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.1*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Número de Peça" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                            <Entry  IsEnabled="False" FontFamily="NunitoM" Placeholder="Campo Automático" Text="{Binding SelectedProductionOrder.PartNumber}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                        </Grid>
+                        <!-- Quantity -->
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.1*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Quantidade" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                            <Entry  IsEnabled="False" FontFamily="NunitoM" Placeholder="Campo Automático" Text="{Binding SelectedProductionOrder.Quantity}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Frame>
+            </Border>
+
+            <!-- Order quantity -->
+            <Border  Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                </Border.Shadow>
+                <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                    <VerticalStackLayout>
+                        <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Quantidade da Ordem" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+
+                        <!-- New Quantity -->
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.25*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition> 
+                            </Grid.ColumnDefinitions>
+                            <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Quantidade para WIP" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                            <Entry Keyboard="Numeric" Text="{Binding ToWIPQuantity}" FontFamily="NunitoM" Placeholder="0" Grid.Column="1" Grid.ColumnSpan="1"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Frame>
+            </Border>
+
+            <Button Margin="12,0,12,12"  FontSize="Medium" BackgroundColor="#333333" FontFamily="NunitoM" Text="Gravar" Command="{Binding SaveButtonPressed}"></Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

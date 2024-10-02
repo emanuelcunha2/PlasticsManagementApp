@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlasticsApp.Views.EndOfLotPage"
+             Title="EndOfLotPage"
+             BackgroundColor="#ebebeb">
+    
+    <NavigationPage.TitleView>
+        <VerticalStackLayout VerticalOptions="Center">
+            <Label VerticalOptions="CenterAndExpand" Margin="0,-5,0,0"  Text="Injecção" FontSize="Title" TextColor="#333333" FontFamily="NunitoM"/>
+            <Label VerticalOptions="CenterAndExpand" Margin="0,-5,0,0"  Text="Mover para Armazém" FontSize="Caption" TextColor="#333333" FontFamily="NunitoM"/>
+        </VerticalStackLayout>
+    </NavigationPage.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout Margin="0,2,0,0">
+
+            <!-- Production Order -->
+            <Border  Margin="12,12,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                </Border.Shadow>
+                <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                    <VerticalStackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Ordem de Produção" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+                            <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Subtitle" Text="{Binding SelectedProductionOrder.OrderId}" TextColor="CornflowerBlue" Margin="0,0,0,0" HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                       
+                        <!-- Order number -->
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Número Ordem" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                            <Entry FontFamily="NunitoM" Placeholder="Ler ou inserir" Text="{Binding SelectedProductionOrder.OrderNumber}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                        </Grid>
+
+                        <!-- Reject lot checkbox --> 
+                        <StackLayout Orientation="Horizontal" Margin="0,2,0,0" HorizontalOptions="EndAndExpand">
+                            
+                            <Label FontFamily="NunitoM"  FontSize="Subtitle" Text="Rejeitar Lote" VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding Source={x:Reference LotRejectedCheckbox}, Path=IsChecked}"
+                                                 Value="true">
+                                        <Setter Property="FontFamily"
+                                                Value="NunitoB" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding LotRejectedTicked}" ></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <CheckBox IsChecked="{Binding IsLotRejected}" x:Name="LotRejectedCheckbox" Color="CornflowerBlue" VerticalOptions="CenterAndExpand" Margin="7,0,0,0"   ></CheckBox>
+                        </StackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+            </Border>
+
+            <!-- Production Order Informations -->
+            <Border  Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                </Border.Shadow>
+                <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                    <VerticalStackLayout>
+                        <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Informações" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+
+                        <!-- PartNumber -->
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Número de Peça" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                            <Entry  IsEnabled="False" FontFamily="NunitoM" Placeholder="Campo Automático" Text="{Binding SelectedProductionOrder.PartNumber}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                        </Grid>
+                        <!-- Quantity Orders -->
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Quantidade Ordens" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                            <Entry  IsEnabled="False" FontFamily="NunitoM" Placeholder="Campo Automático" Text="{Binding QuantityOrders}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                        </Grid>
+                        <!-- Quantity Parts -->
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label FontFamily="NunitoM" Grid.Column="0" FontSize="Subtitle" Padding="0" Text="Quantidade Peças" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                            <Entry  IsEnabled="False" FontFamily="NunitoM" Placeholder="Campo Automático" Text="{Binding QuantityParts}" Grid.Column="1" Grid.ColumnSpan="2"  FontSize="Subtitle" Margin="0,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"></Entry>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Frame>
+            </Border>
+
+
+            <!-- FTQ Table -->
+            <Border  Margin="12,0,12,12" StrokeThickness="0" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                                        Offset="0,0"
+                                        Radius="20"
+                                        Opacity="0.2" />
+                </Border.Shadow>
+                <Frame Padding="15,10,15,15" Margin="0" BorderColor="Transparent">
+                    <VerticalStackLayout>
+                        <Label FontFamily="NunitoB" Grid.Column="0" FontSize="Small" Text="Tabela das Ordens" TextColor="{StaticResource ThemeColor1}" Margin="0,0,0,0"></Label>
+
+                        <!-- Table Title -->
+                        <StackLayout BackgroundColor="White" HeightRequest="40" Margin="0,5,0,0">
+                            <Grid VerticalOptions="CenterAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.7*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Número da Ordem" FontSize="Subtitle" FontFamily="NunitoM" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5"></Label>
+                                <Label Grid.Column="1" Text="Quantidade" FontSize="Subtitle" FontFamily="NunitoM" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5"></Label>
+                            </Grid>
+                        </StackLayout>
+
+                        <!-- Table -->
+                        <StackLayout Margin="0" IsVisible="{Binding IsProductionOrdersTableVisible}">
+                            <ListView ItemsSource="{Binding ProductionOrders}" VerticalScrollBarVisibility="Never" SeparatorVisibility="None" Margin="0,0,0,0">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout BackgroundColor="White">
+                                                <BoxView HeightRequest="1"  CornerRadius="2" Color="#f6f6f6"></BoxView>
+                                                <Grid VerticalOptions="CenterAndExpand">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1.7*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="0.55*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" Text="{Binding OrderNumber}" FontFamily="NunitoM" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5" ></Label>
+                                                    <Label Grid.Column="1" Text="{Binding QuantityWIP}" FontFamily="NunitoM" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5"></Label>
+                                                    <ImageButton Source="trashcan" Grid.Column="2" Margin="3"  Command="{Binding BindingContext.DeleteOrderFail, Source={RelativeSource AncestorType={x:Type ListView}}}" CommandParameter="{Binding .}"></ImageButton>
+                                                </Grid>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+
+                        <!-- On Empty Message -->
+                        <StackLayout IsVisible="{Binding IsEmptyTableMessageVisible}">
+                            <BoxView HeightRequest="1"  CornerRadius="2" Color="#f6f6f6"></BoxView>
+                            <Label Grid.Column="1" Text="Sem ordens" FontFamily="NunitoM" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="5" TextColor="CornflowerBlue"></Label>
+                        </StackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+            </Border>
+
+
+            <Button Margin="12,0,12,12"  FontSize="Medium" BackgroundColor="#333333" FontFamily="NunitoM" Text="Gravar" IsEnabled="{Binding SaveButtonEnabled}" Command="{Binding SaveButtonPressed}"></Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
